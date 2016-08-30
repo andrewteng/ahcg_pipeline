@@ -1,15 +1,15 @@
-#AHCG Pipeline- Variant calling pipeline for genomic data analysis
-BIOL 8803F, Andrew Teng
+#AHCG Pipeline- BIOL 8803F, Andrew Teng
+Variant calling pipeline for genomic data analysis
 
 ##Software Requirements
 
-[Python3 - version 3.4.1]
-[Trimmomatic - version 0.36]
-[Bowtie2 - version 2.2.9]
-[Picard tools - version 2.6.0]
-[GATK - version 3.4]
-[Samtools- version 1.x]
-[Java- version 1.8]
+Python3 - version 3.4.1
+Trimmomatic - version 0.36
+Bowtie2 - version 2.2.9
+Picard tools - version 2.6.0
+GATK - version 3.4
+Samtools- version 1.x
+Java- version 1.8
 
 ##Reference sequence: UCSC hg19.fa
 
