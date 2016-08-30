@@ -12,11 +12,15 @@ import glob
 import logging
 import argparse
 import subprocess
+import time
+
 
 #main statement
 def main(trim_path, bowtie_path, picard_path, gatk_path,
         input_path, index_path, dbsnp_path, adapter_path,
         ref_path, out_path):
+
+	start_time = time.time()
 
     #define paths for all necessary software and files
     trim_path = os.path.abspath(trim_path)
@@ -97,7 +101,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     brun.wait()
     
     if brun.returncode != 0:
-        print('Bowtie failed; Exiting program')
+        print('ERROR: Bowtie failed; Exiting program')
         sys.exit()
 
     #Add read group information
@@ -112,7 +116,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     arun.wait()
     
     if arun.returncode != 0:
-        print('Picard add read groups failed; Exiting program')
+        print('ERROR: Picard add read groups failed; Exiting program')
         sys.exit()
 
     #Mark PCR duplicates
@@ -125,7 +129,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     mdrun = subprocess.Popen(mdcmd, shell=False)
     mdrun.wait()
     if mdrun.returncode != 0:
-        print('Picard mark duplicate failed; Exiting program')
+        print('ERROR: Picard mark duplicate failed; Exiting program')
         sys.exit()
 
     #Fix mate information
@@ -138,7 +142,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     frun.wait()
     
     if frun.returncode != 0:
-        print('Picard fix mate information failed; Exiting program')
+        print('ERROR: Picard fix mate information failed; Exiting program')
         sys.exit()
    
     #Run realigner target creator
@@ -152,7 +156,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     trrun.wait()
     
     if trrun.returncode != 0:
-        print('Realigner Target creator failed; Exiting program')
+        print('ERROR: Realigner Target creator failed; Exiting program')
         sys.exit()
      
 
@@ -167,7 +171,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     rerun.wait()
 
     if rerun.returncode != 0:
-        print('Indel realigner creator failed; Exiting program')
+        print('ERROR: Indel realigner creator failed; Exiting program')
         sys.exit()
 
     #Base quality score recalibration
@@ -181,7 +185,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     bqsrun.wait()
 
     if bqsrun.returncode != 0:
-        print('Base quality score recalibrator failed; Exiting program')
+        print('ERROR: Base quality score recalibrator failed; Exiting program')
         sys.exit()
     
     #Print Reads
@@ -194,7 +198,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     prrun.wait()
 
     if prrun.returncode != 0:
-        print('Print reads failed; Exiting program')
+        print('ERROR: Print reads failed; Exiting program')
         sys.exit()
 
 
@@ -209,12 +213,13 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
     hrun.wait()
     
     if hrun.returncode != 0:
-        print('Haplotype caller failed; Exiting program')
+        print('ERROR: Haplotype caller failed; Exiting program')
         sys.exit()
 
 
-    print('Variant call pipeline completed')
+    print('DONE: Variant call pipeline completed')
     print('VCF file can be found at {0}'.format(vcf_path))
+    print("Total run time: %s seconds" % (time.time() - start_time))
     return
 
 if __name__ == '__main__':
