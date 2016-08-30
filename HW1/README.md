@@ -1,6 +1,7 @@
 ##AHCG Pipeline
+Andrew Teng-BIOL 8803F    
 Variant calling pipeline for genomic data analysis  
-BIOL 8803F, Andrew Teng
+  
 
 ###Software Requirements
 
@@ -53,7 +54,7 @@ lib/picard.jar -g lib/GenomeAnalysisTK.jar -i fastq/*fastq -w bowtie_index/hg19 
 -a lib/Trimmomatic-0.36/adapters/TruSeq2-PE.fa -r resources/genome/hg19.fa -o ./
 ```
 ###----
-###Progress
+###Progress Updates
 ####08/30/16
 Added directories to .gitignore and changed path in config file
 ```{sh}
