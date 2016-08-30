@@ -52,7 +52,7 @@ python3 ahcg_pipeline.py -t lib/Trimmomatic-0.36/trimmomatic-0.36.jar -b lib/bow
 lib/picard.jar -g lib/GenomeAnalysisTK.jar -i fastq/*fastq -w bowtie_index/hg19 -d resources/dbsnp/dbsnp_138.hg19.vcf  
 -a lib/Trimmomatic-0.36/adapters/TruSeq2-PE.fa -r resources/genome/hg19.fa -o ./
 ```
-##---
+###----
 ###Progress
 ####08/30/16
 Added directories to .gitignore and changed path in config file
@@ -61,3 +61,7 @@ Added directories to .gitignore and changed path in config file
 vi .git/config
 ```
 Pushed output vcf file, pipeline, and README
+```{sh}
+git add <FILENAME>
+git commit <FILENAME> -m <MESSAGE>
+```
