@@ -3,13 +3,13 @@ Variant calling pipeline for genomic data analysis
 
 ##Software Requirements
 
-Python3 - version 3.4.1
-Trimmomatic - version 0.36
-Bowtie2 - version 2.2.9
-Picard tools - version 2.6.0
-GATK - version 3.4
-Samtools- version 1.x
-Java- version 1.8
+1. Python3 - version 3.4.1
+2. Trimmomatic - version 0.36
+3. Bowtie2 - version 2.2.9
+4. Picard tools - version 2.6.0
+5. GATK - version 3.4
+6. Samtools- version 1.x
+7. Java- version 1.8
 
 ##Reference sequence: UCSC hg19.fa
 
