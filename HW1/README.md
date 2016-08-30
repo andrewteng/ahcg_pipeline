@@ -60,8 +60,9 @@ Added directories to .gitignore and changed path in config file
 .gitignore
 vi .git/config
 ```
-Pushed output vcf file, pipeline, and README
+Pushed output vcf file, AHCG pipeline, and README file
 ```{sh}
 git add <FILENAME>
 git commit <FILENAME> -m <MESSAGE>
+git push origin master
 ```
