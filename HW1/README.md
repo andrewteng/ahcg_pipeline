@@ -12,9 +12,9 @@ BIOL 8803F, Andrew Teng
 6. Samtools- version 1.x
 7. Java- version 1.8
 
-###Reference sequence: UCSC hg19.fa
+####Reference sequence: UCSC hg19.fa
 
-###Test data: NIST sample NA12878
+####Test data: NIST sample NA12878
 
 ```{sh}
 wget ftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/NIST7035_TAAGGCGA_L001_R1_001.fastq.gz
@@ -27,8 +27,8 @@ head -100000 NIST7035_TAAGGCGA_L001_R2_001.fastq > test_r2.fastq
 
 ###Add to path 
 ```{sh}
-export PATH=”$PATH:/home/basespace/projects/ahcg_pipeline/lib/bowtie2-2.2.9”
-export PATH=”$PATH:/home/basespace/projects/ahcg_pipeline/lib/Trimmomatic-0.36”
+export PATH="$PATH:/home/basespace/projects/ahcg_pipeline/lib/bowtie2-2.2.9"
+export PATH="$PATH:/home/basespace/projects/ahcg_pipeline/lib/Trimmomatic-0.36"
 ```
 
 ###Build bowtie index 
