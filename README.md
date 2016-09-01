@@ -26,5 +26,9 @@ tr , '\n' < col3.txt > col3-1.txt
 
 printf 'chr17\n%.0s' {1..23} > col1.txt
 
-paste col1.txt col2-1.txt col3-1.txt > NM007294_exome.txt
+paste col1.txt col2-1.txt col3-1.txt > NM007294_exome.bed
+```
+Create FASTA file
+```{sh}
+bedtools getfasta -fi resources/genome/hg19.fa -bed NM007294_exome.bed -fo NM007294.fa
 ```
