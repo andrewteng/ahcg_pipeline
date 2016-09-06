@@ -1,0 +1,10 @@
+#Ignore the following folder
+local
+fq
+bed_misc
+bowtie_index
+fastq
+nist
+resources
+test
+#lib
