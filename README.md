@@ -10,10 +10,14 @@ Variant calling pipeline for genomic data analysis
 3. Bowtie2 - version 2.2.9
 4. Picard tools - version 2.6.0
 5. GATK - version 3.4
-6. Samtools- version 1.x
+6. Samtools- version 0.1.19
 7. Java- version 1.8
 
 ####Reference sequence: UCSC hg19.fa
+```{sh}
+tar -xvzf www.prism.gatech.edu/~sravishankar9/resources.tar.gz
+```
+
 
 ####Test data: NIST sample NA12878
 
