@@ -121,5 +121,23 @@ bedtools bamtofastq -i <BAM file> -fq <fastq r1> -fq2 <fastq r2>
 ```
 
 ####09/08/2016
+Rerun previous commands
+
+####09/13/2016
+Because previous runs yielded an empty vcf file, the pipeline was rerun using a new reference file. 
+```{sh}
+wget http://vannberg.biology.gatech.edu/data/chr17.fa
+```
+
+The entire pipeline was rerun using the new reference file and a vcf file was uploaded. 
+
+Compare Illumina and GIAB
+
+Illumina file: ftp://platgene_ro@ussd-ftp.illumina.com/2016-1.0/hg19/small_variants/NA12878/NA12878.vcf.gz
+Genome in a bottle: ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/project.NIST.hc.snps.indels.vcf
+
+```{sh}
+vcftools --vcf <file> --diff <file>
+```
 
 
