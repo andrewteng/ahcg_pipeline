@@ -111,6 +111,10 @@ ftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Ex
 ftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/project.NIST_NIST7086_H7AP8ADXX_CGTACTAG_1_NA12878.bwa.markDuplicates.bam1246c31ecfe53e9f55bb4890d16ebb9aftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/project.NIST_NIST7086_H7AP8ADXX_CGTACTAG_1_NA12878.bwa.markDuplicates.bai1c9437d4ada3a5c8278c46cc2654b354
 ftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/project.NIST_NIST7086_H7AP8ADXX_CGTACTAG_2_NA12878.bwa.markDuplicates.bam08f63aba86cad1cde5ace41b602cb347ftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/project.NIST_NIST7086_H7AP8ADXX_CGTACTAG_2_NA12878.bwa.markDuplicates.baiacb06b877735a4bed4b310d7f08eecfa
 ```
+Merge BAM files together
+```{sh}
+samtools merge <Output BAM file> *.bam
+```
 Subset NA12878 sample using samtools
 ```{sh}
 samtools view -L <BED file> -b -o <output BAM file> <input BAM file>
@@ -131,13 +135,27 @@ wget http://vannberg.biology.gatech.edu/data/chr17.fa
 
 The entire pipeline was rerun using the new reference file and a vcf file was uploaded. 
 
-Compare Illumina and GIAB
+Obatin gold standard vcf files from Illumina and GIAB
 
-Illumina file: ftp://platgene_ro@ussd-ftp.illumina.com/2016-1.0/hg19/small_variants/NA12878/NA12878.vcf.gz
-Genome in a bottle: ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/NA12878/Garvan_NA12878_HG001_HiSeq_Exome/project.NIST.hc.snps.indels.vcf
+Illumina file: ftp://platgene_ro@ussd-ftp.illumina.com/2016-1.0/hg19/small_variants/NA12878/NA12878.vcf.gz  
+
+Genome in a bottle: ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/latest/NA12878_GIAB_highconf_CG-IllFB-IllGATKHC-Ion-Solid-10X_CHROM1-X_v3.3_highconf.vcf.gz
 
 ```{sh}
 vcftools --vcf <file> --diff <file>
 ```
 
+####09/15/2016
+Finding variants
+```{sh}
+bgzip <VCF file>
+tabix -p vcf <VCF file>
+```
+TODO:
+Sliding window read-depth coverage
+```{sh}
+java -jar GenomeAnalysisTK.jar -T DepthOfCoverage -R reference.fasta -I input_bams.list
+```
+For list of bam files, a text file needs to be creates with each line being a path to a unique bam file. 
 
+R script for venn diagram visualisation
