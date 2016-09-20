@@ -163,7 +163,7 @@ R script for venn diagram visualisation
 ####09/20/2016
 
 Common genes in both the Color Genetics paper and Otogenetics Breast Cancer Panel Gene List 
-```{sh}
+
 |Gene|NCBI Reference|OMIM|
 |----|--------------|----|
 |AR|NM_000044.3|313700|
@@ -185,4 +185,3 @@ Common genes in both the Color Genetics paper and Otogenetics Breast Cancer Pane
 |STK11|NM_000455.4|602216|
 |TGFFB1|NM_000660.4|190180|
 |TP53|NM_000546.5|191770|
-```
