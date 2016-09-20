@@ -1,9 +1,9 @@
 ##AHCG Pipeline
-Andrew Teng- BIOL 8803F    
-Variant calling pipeline for genomic data analysis    
+Andrew Teng || BIOL 8803F || Variant calling pipeline for genomic data analysis    
+
 ---
 ####Software Requirements
-
+```{sh}
 1. Python3 - version 3.4.1
 2. Trimmomatic - version 0.36
 3. Bowtie2 - version 2.2.9
@@ -11,7 +11,7 @@ Variant calling pipeline for genomic data analysis
 5. GATK - version 3.4
 6. Samtools- version 0.1.19
 7. Java- version 1.8
-
+```
 ####Reference sequence: UCSC (hg19)
 ```{sh}
 wget ftp://ussd-ftp.illumina.com/Homo_sapiens/UCSC/hg19/Homo_sapiens_UCSC_hg19.tar.gz  
@@ -57,7 +57,7 @@ lib/picard.jar -g lib/GenomeAnalysisTK.jar -i fastq/*fastq -w bowtie_index/hg19 
 -a lib/Trimmomatic-0.36/adapters/TruSeq2-PE.fa -r resources/genome/hg19.fa -o ./
 ```
 ---
-####Progress Updates
+###Progress Updates
 ---
 ####08/30/2016: Setting up github repository.
 Added directories to .gitignore and changed path in config file
@@ -73,7 +73,7 @@ git push origin master
 ```
 ---
 ####09/01/2016: Extraction of desired gene and BED file formation
-Downloaded gene coordinates file for hg19
+Downloaded gene coordinates file for hg19  
 Used `grep` to extract specific gene
 ```{sh}
 wget http://vannberg.biology.gatech.edu/data/ahcg2016/reference_genome/hg19_refGene.txt
@@ -148,13 +148,13 @@ bgzip <VCF file>
 tabix -p vcf <VCF file>
 ```
 TODO:  
-- Sliding window read-depth coverage
+- Sliding window read-depth coverage.  
 	```{sh}
 	java -jar GenomeAnalysisTK.jar -T DepthOfCoverage -R reference.fasta -I input_bams.list
 	```
-- For list of bam files, a text file needs to be creates with each line being a path to a unique bam file. 
+- For list of bam files, a text file needs to be creates with each line being a path to a unique bam file.  
+- R script for venn diagram visualization.  
 
-- R script for venn diagram visualisation
 ---
 ####09/20/2016: Gene List for Breast and Ovarian Cancers
 Common genes in both the Color Genetics paper and Otogenetics Breast Cancer Panel Gene List 
