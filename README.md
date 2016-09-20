@@ -57,9 +57,9 @@ python3 ahcg_pipeline.py -t lib/Trimmomatic-0.36/trimmomatic-0.36.jar -b lib/bow
 lib/picard.jar -g lib/GenomeAnalysisTK.jar -i fastq/*fastq -w bowtie_index/hg19 -d resources/dbsnp/dbsnp_138.hg19.vcf  
 -a lib/Trimmomatic-0.36/adapters/TruSeq2-PE.fa -r resources/genome/hg19.fa -o ./
 ```
-###----------
-##Progress Updates
-####08/30/16
+
+#Progress Updates
+##08/30/16
 - Added directories to .gitignore and changed path in config file
 ```{sh}
 .gitignore
@@ -71,7 +71,7 @@ git add <FILENAME>
 git commit <FILENAME> -m <MESSAGE>
 git push origin master
 ```
-####09/01/16
+##09/01/16
 
 - Created fasta file for BRCA1 NM_007294
 ```{sh}
@@ -101,7 +101,7 @@ paste col1.txt col2-1.txt col3-1.txt col4.txt col5.txt col6-1.txt> NM007294_exom
 ```{sh}
 bedtools getfasta -fi resources/genome/hg19.fa -bed NM007294_exome.bed -fo NM007294.fa
 ```
-####09/06/2016
+##09/06/2016
 Extracting reads mapped to BRCA1 from NA12878 HiSeq Exome:
 
 - BAM files
@@ -124,10 +124,10 @@ samtools view -L <BED file> -b -o <output BAM file> <input BAM file>
 bedtools bamtofastq -i <BAM file> -fq <fastq r1> -fq2 <fastq r2>
 ```
 
-####09/08/2016
+##09/08/2016
 Rerun previous commands
 
-####09/13/2016
+##09/13/2016
 - Because previous runs yielded an empty vcf file, the pipeline was rerun using a new reference file. 
 ```{sh}
 wget http://vannberg.biology.gatech.edu/data/chr17.fa
@@ -145,7 +145,7 @@ wget http://vannberg.biology.gatech.edu/data/chr17.fa
 vcftools --vcf <file> --diff <file>
 ```
 
-####09/15/2016
+##09/15/2016
 - Finding variants
 ```{sh}
 bgzip <VCF file>
@@ -160,7 +160,7 @@ java -jar GenomeAnalysisTK.jar -T DepthOfCoverage -R reference.fasta -I input_ba
 
 - R script for venn diagram visualisation
 
-####09/20/2016
+##09/20/2016
 
 - Common genes in both the Color Genetics paper and Otogenetics Breast Cancer Panel Gene List 
 
