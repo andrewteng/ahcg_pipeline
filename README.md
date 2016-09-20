@@ -159,3 +159,30 @@ java -jar GenomeAnalysisTK.jar -T DepthOfCoverage -R reference.fasta -I input_ba
 For list of bam files, a text file needs to be creates with each line being a path to a unique bam file. 
 
 R script for venn diagram visualisation
+
+####09/20/2016
+
+Common genes in both the Color Genetics paper and Otogenetics Breast Cancer Panel Gene List 
+```{sh}
+|Gene|NCBI Reference|OMIM|
+|----|--------------|----|
+|AR|NM_000044.3|313700|
+|ATM|NM_000051.3|607585|
+|BARD1|NM_000465.3|601593|
+|BRCA1|NM_007298.3|113705|
+|BRCA2|NM_000059.3|600185|
+|BRIP1|NM_032043.2|605882|
+|CASP8|NM_001080124.1|601763|
+|CDH1|NM_004360.3|192090|
+|CHEK2|NM_001005735.1|604373|
+|DIRAS3|NM_004675.2|605193|
+|ERBB2|NM_001005862.1|164870|
+|NBN|NM_002485.4|602667|
+|PALB2|NM_024675.3|601355|
+|PTEN|NM_000314.4|601355|
+|RAD50|NM_005732.3|604040|
+|RAD51|NM_001164269.1|179617|
+|STK11|NM_000455.4|602216|
+|TGFFB1|NM_000660.4|190180|
+|TP53|NM_000546.5|191770|
+```
