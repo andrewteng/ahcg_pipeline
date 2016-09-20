@@ -177,6 +177,7 @@ Common genes in both the Color Genetics paper and Otogenetics Breast Cancer Pane
 |CHEK2|NM_001005735.1|604373|Both|
 |DIRAS3|NM_004675.2|605193|OTO|
 |ERBB2|NM_001005862.1|164870|OTO|
+|EPCAM|NA|NA|Color|
 |MLH1|NA|NA|Color|
 |MSH2|NA|NA|Color|
 |MSH6|NA|NA|Color|
