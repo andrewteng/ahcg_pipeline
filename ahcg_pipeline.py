@@ -20,7 +20,7 @@ def main(trim_path, bowtie_path, picard_path, gatk_path,
         input_path, index_path, dbsnp_path, adapter_path,
         ref_path, out_path):
 
-	start_time = time.time()
+    start_time = time.time()
 
     #define paths for all necessary software and files
     trim_path = os.path.abspath(trim_path)
