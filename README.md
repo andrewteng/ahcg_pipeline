@@ -14,6 +14,7 @@ Andrew Teng || BIOL 8803F || Variant calling pipeline for genomic data analysis
 ####Reference genome: UCSC (hg19)
 ```{sh}
 wget ftp://ussd-ftp.illumina.com/Homo_sapiens/UCSC/hg19/Homo_sapiens_UCSC_hg19.tar.gz  
+*used curated file due to size limits
 tar -xvzf www.prism.gatech.edu/~sravishankar9/resources.tar.gz
 ```
 
@@ -186,6 +187,8 @@ Otogenetics Gene List: http://www.otogenetics.com/forms/Breast_Cancer_gene_list.
 |PMS2|NM_000535.6|600259|16|Color|
 |RAD50|NM_005732.3|604040|25|OTO|
 |RAD51|NM_001164269.1|179617|10|Both|
+|RAD51C|NM_058216.1|602774|NA|OTO|
+|RAD51D|NM_001142571.1|602954|NA|Color
 |STK11|NM_000455.4|602216|10|Both|
 |TGFFB1|NM_000660.4|190180|7|OTO|
 |TP53|NM_000546.5|191770|11|Both|
@@ -193,11 +196,15 @@ Otogenetics Gene List: http://www.otogenetics.com/forms/Breast_Cancer_gene_list.
 ####09/22/2016: Generation of BED file for new gene list.
 ```{sh}
 grep -f gene_list_breast_ovarian.txt hg19_refGene.txt > breast_ovarian.txt
-```
-Created BED file and added 20 nucleotides to each side for each exon.
+grep -f omim_breast_ovarian.txt breast_ovarian.txt > breast_ovarian.txt```
+Created BED file and added 20 nucleotides (capture step) to each side for each exon.
 ```{sh}
 perl generatebed.pl > exomes_breast_ovarian.bed
 ```
 ---
-####09/27/2016
+####09/27/2016: Creation of VCF file and extraction of variants
+Used commands from [09/26](https://github.com/andrewteng/ahcg_pipeline#09062016-variant-calling) to create FASTQ file.
+
+Reran [pipeline](https://github.com/andrewteng/ahcg_pipeline#build-bowtie-index).
+
 ---
