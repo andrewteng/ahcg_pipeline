@@ -147,14 +147,10 @@ vcftools --vcf <file> --diff <file>
 bgzip <VCF file>
 tabix -p vcf <VCF file>
 ```
-TODO:  
-- Sliding window read-depth coverage.  
-	```
-	java -jar GenomeAnalysisTK.jar -T DepthOfCoverage -R reference.fasta -I input_bams.list
-	```
-- For list of bam files, a text file needs to be creates with each line being a path to a unique bam file.  
-- R script for venn diagram visualization.  
-
+Sliding window read-depth coverage.  
+```{sh}
+java -jar GenomeAnalysisTK.jar -T DepthOfCoverage -R reference.fasta -I input_bams.list
+```
 ---
 ####09/20/2016: Generation of common genes in breast and ovarian cancers.
 Common genes in both the Color Genetics paper and Otogenetics Breast Cancer Panel Gene List. 
@@ -194,17 +190,29 @@ Otogenetics Gene List: http://www.otogenetics.com/forms/Breast_Cancer_gene_list.
 |TP53|NM_000546.5|191770|11|Both|
 ---
 ####09/22/2016: Generation of BED file for new gene list.
+Used `grep` to extract.
 ```{sh}
-grep -f gene_list_breast_ovarian.txt hg19_refGene.txt > breast_ovarian.txt
-grep -f omim_breast_ovarian.txt breast_ovarian.txt > breast_ovarian.txt```
+grep -Ff gene_list_breast_ovarian.txt hg19_refGene.txt > breast_ovarian.txt
+grep -Ff omim_breast_ovarian.txt breast_ovarian.txt > breast_ovarian.txt
+``` 
 Created BED file and added 20 nucleotides (capture step) to each side for each exon.
 ```{sh}
 perl generatebed.pl > exomes_breast_ovarian.bed
 ```
 ---
-####09/27/2016: Creation of VCF file and extraction of variants
-Used commands from [09/26](https://github.com/andrewteng/ahcg_pipeline#09062016-variant-calling) to create FASTQ file.
+####09/27/2016: Creation of VCF file and extraction of variants.
+Used commands from [09/26](https://github.com/andrewteng/ahcg_pipeline#09062016-variant-calling) to create two FASTQ read files.
 
-Reran [pipeline](https://github.com/andrewteng/ahcg_pipeline#build-bowtie-index).
+Re-ran [pipeline](https://github.com/andrewteng/ahcg_pipeline#build-bowtie-index) to generate a final VCF file.
 
+---
+####09/29/2016: Comparison of extracted variants with GIAB variants.
+Obtained Genome in a Bottle (GIAB) variants.
+```{sh}
+wget ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/latest/NA12878_GIAB_highconf_CG-IllFB-IllGATKHC-Ion-Solid-10X_CHROM1-X_v3.3_highconf.vcf.gz
+gunzip *.gz
+```
+Compared VCF files using command from [09/13](https://github.com/andrewteng/ahcg_pipeline#09132016-re-ran-pipeline-using-new-reference-file).
+---
+####10/04/2016
 ---
