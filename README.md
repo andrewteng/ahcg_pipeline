@@ -139,7 +139,7 @@ Genome in a Bottle: ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG
 ```
 Compared variants in the VCF file.
 ```{sh}
-vcftools --vcf <file> --diff <file>
+vcftools --vcf <FILE1> --diff <FILE2>
 ```
 ---
 ####09/15/2016: Finding variants.
@@ -205,6 +205,11 @@ Used commands from [09/26](https://github.com/andrewteng/ahcg_pipeline#09062016-
 
 Re-ran [pipeline](https://github.com/andrewteng/ahcg_pipeline#build-bowtie-index) to generate a final VCF file.
 
+Extracted variants from VCF file using coordinates from BED file.
+```{sh}
+perl extractVariants.pl > extractedVariants.vcf
+```
+
 ---
 ####09/29/2016: Comparison of extracted variants with GIAB variants.
 Obtained Genome in a Bottle (GIAB) variants.
@@ -213,6 +218,9 @@ wget ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/latest/NA12
 gunzip *.gz
 ```
 Compared VCF files using command from [09/13](https://github.com/andrewteng/ahcg_pipeline#09132016-re-ran-pipeline-using-new-reference-file).
+```{sh}
+vcftools --vcf <FILE1> --diff <FILE2>
+```
 ---
 ####10/04/2016
 ---
