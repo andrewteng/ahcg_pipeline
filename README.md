@@ -216,12 +216,10 @@ Obtained Genome in a Bottle (GIAB) variants.
 ```{sh}
 wget ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/latest/NA12878_GIAB_highconf_CG-IllFB-IllGATKHC-Ion-Solid-10X_CHROM1-X_v3.3_highconf.vcf.gz
 gunzip *.gz
-
+```
 First column was incorrect, added 'chr' column.
 ```{sh}
 awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' NA12878_GIAB_highconf_CG-IllFB-IllGATKHC-Ion-Solid-10X_CHROM1-X_v3.3_highconf.vcf > GIAB.vcf
-```
-
 ```
 Compared VCF files.
 ```{sh}
