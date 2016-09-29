@@ -186,7 +186,7 @@ Otogenetics Gene List: http://www.otogenetics.com/forms/Breast_Cancer_gene_list.
 |RAD51C|NM_058216.1|602774|NA|OTO|
 |RAD51D|NM_001142571.1|602954|NA|Color
 |STK11|NM_000455.4|602216|10|Both|
-|TGFFB1|NM_000660.4|190180|7|OTO|
+|TGFB1|NM_000660.4|190180|7|OTO|
 |TP53|NM_000546.5|191770|11|Both|
 ---
 ####09/22/2016: Generation of BED file for new gene list.
@@ -207,7 +207,7 @@ Re-ran [pipeline](https://github.com/andrewteng/ahcg_pipeline#build-bowtie-index
 
 Extracted variants from VCF file using coordinates from BED file.
 ```{sh}
-perl extractVariants.pl > extractedVariants.vcf
+bedtools intersect -a variants.vcf -b exomes_breast_ovarian.bed > extractedVariants.vcf
 ```
 
 ---
@@ -216,10 +216,16 @@ Obtained Genome in a Bottle (GIAB) variants.
 ```{sh}
 wget ftp://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/release/NA12878_HG001/latest/NA12878_GIAB_highconf_CG-IllFB-IllGATKHC-Ion-Solid-10X_CHROM1-X_v3.3_highconf.vcf.gz
 gunzip *.gz
-```
-Compared VCF files using command from [09/13](https://github.com/andrewteng/ahcg_pipeline#09132016-re-ran-pipeline-using-new-reference-file).
+
+First column was incorrect, added 'chr' column.
 ```{sh}
-vcftools --vcf <FILE1> --diff <FILE2>
+awk '{if($0 !~ /^#/) print "chr"$0; else print $0}' NA12878_GIAB_highconf_CG-IllFB-IllGATKHC-Ion-Solid-10X_CHROM1-X_v3.3_highconf.vcf > GIAB.vcf
+```
+
+```
+Compared VCF files.
+```{sh}
+bedtools intersect -a <FILE1> -b <FILE2>
 ```
 ---
 ####10/04/2016
