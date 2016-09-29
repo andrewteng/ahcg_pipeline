@@ -159,7 +159,6 @@ Color Genetics Paper: https://s3.amazonaws.com/color-static-prod/pdfs/validation
 Otogenetics Gene List: http://www.otogenetics.com/forms/Breast_Cancer_gene_list.pdf
 
 ```
-<sub>
 |Gene|NCBI Reference|OMIM|# of Exons|Source|
 |----|--------------|----|----|---|
 |AR|NM_000044.3|313700|8|OTO|
@@ -188,7 +187,7 @@ Otogenetics Gene List: http://www.otogenetics.com/forms/Breast_Cancer_gene_list.
 |STK11|NM_000455.4|602216|10|Both|
 |TGFB1|NM_000660.4|190180|7|OTO|
 |TP53|NM_000546.5|191770|11|Both|
-</sub>
+
 
 ---
 ####09/22/2016: Generation of BED file for new gene list.
