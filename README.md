@@ -228,4 +228,14 @@ bedtools intersect -a <FILE1> -b <FILE2>
 ```
 ---
 ####10/04/2016
+Downloaded new VCF file.
+```{sh}
+wget http://vannberglab.biology.gatech.edu/data/ahcg2016/vcf/NA12878_variants.vcf
+```
+Extracted variants and compared. 
+
+```{sh}
+java -Xmx4g -jar lib/GenomeAnalysisTK.jar -T VariantRecalibrator -R resources/genome/hg19.fa -input NA12878_extractedVariants.vcf -resource:hapmap,known=false,training=true,truth=true,prior=15.0 hapmap_3.3.b37.sites.vcf -resource:omni,known=false,training=true,truth=false,prior=12.0 1000G_omni2.5.b37.sites.vcf -resource:1000G,known=false,training=true,truth=false,prior=10.0 1000G_phase1.snps.high_confidence.vcf -resource:dbsnp,known=true,training=false,truth=false,prior=2.0 resources/dbsnp/dbsnp_138.hg19.vcf -an QD -mode SNP -recalFile output.recal -tranchesFile output.tranches
+```
+
 ---
