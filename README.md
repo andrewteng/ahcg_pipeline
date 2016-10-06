@@ -242,7 +242,7 @@ wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_omni
 wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_phase1.snps.high_confidence.hg19.sites.vcf.gz  
 wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_phase1.snps.high_confidence.hg19.sites.vcf.idx.gz  
   
-java -Xmx4g -jar lib/GenomeAnalysisTK.jar -T VariantRecalibrator -R resources/genome/hg19.fa -input NA12878_extractedVariants.vcf -resource:hapmap,known=false,training=true,truth=true,prior=15.0 hapmap_3.3.b37.sites.vcf -resource:omni,known=false,training=true,truth=false,prior=12.0 1000G_omni2.5.b37.sites.vcf -resource:1000G,known=false,training=true,truth=false,prior=10.0 1000G_phase1.snps.high_confidence.vcf -resource:dbsnp,known=true,training=false,truth=false,prior=2.0 resources/dbsnp/dbsnp_138.hg19.vcf -an QD -mode SNP -recalFile output.recal -tranchesFile output.tranches
+java -Xmx4g -jar lib/GenomeAnalysisTK.jar -T VariantRecalibrator -R resources/genome/hg19.fa -input NA12878_extractedVariants.vcf -resource:hapmap,known=false,training=true,truth=true,prior=15.0 resources/hapmap_3.3.hg19.sites.vcf.gz -resource:omni,known=false,training=true,truth=false,prior=12.0 resources/1000G_omni2.5.hg19.sites.vcf.gz -resource:1000G,known=false,training=true,truth=false,prior=10.0 resources/1000G_phase1.snps.high_confidence.hg19.sites.vcf.gz -resource:dbsnp,known=true,training=false,truth=false,prior=2.0 resources/dbsnp/dbsnp_138.hg19.vcf.gz -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR -an InbreedingCoeff -mode SNP -recalFile output.recal -tranchesFile output.tranches
 ```
 Errored out.
 
@@ -257,7 +257,7 @@ Reran GATK VariantRecalibrator command.
 
 ---
 
-####10/11/2016: Fall Break :fallen_leaf:
+####10/11/2016: Fall Break :leaves: :fallen_leaf:
 No updates.
 
 ---
