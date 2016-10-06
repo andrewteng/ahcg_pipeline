@@ -235,7 +235,31 @@ wget http://vannberglab.biology.gatech.edu/data/ahcg2016/vcf/NA12878_variants.vc
 Extracted variants and compared. 
 
 ```{sh}
+wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/hapmap_3.3.hg19.sites.vcf.gz  
+wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/hapmap_3.3.hg19.sites.vcf.idx.gz  
+wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_omni2.5.hg19.sites.vcf.gz  
+wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_omni2.5.hg19.sites.vcf.idx.gz  
+wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_phase1.snps.high_confidence.hg19.sites.vcf.gz  
+wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_phase1.snps.high_confidence.hg19.sites.vcf.idx.gz  
+  
 java -Xmx4g -jar lib/GenomeAnalysisTK.jar -T VariantRecalibrator -R resources/genome/hg19.fa -input NA12878_extractedVariants.vcf -resource:hapmap,known=false,training=true,truth=true,prior=15.0 hapmap_3.3.b37.sites.vcf -resource:omni,known=false,training=true,truth=false,prior=12.0 1000G_omni2.5.b37.sites.vcf -resource:1000G,known=false,training=true,truth=false,prior=10.0 1000G_phase1.snps.high_confidence.vcf -resource:dbsnp,known=true,training=false,truth=false,prior=2.0 resources/dbsnp/dbsnp_138.hg19.vcf -an QD -mode SNP -recalFile output.recal -tranchesFile output.tranches
 ```
+Errored out.
 
 ---
+####10/06/2016
+Created a `tabix` indexed VCF file.
+```{sh}
+bgzip <VCF FILE>  
+tabix -p <GZ VCF FILE>  
+```
+Reran GATK VariantRecalibrator command.
+
+---
+
+####10/11/2016: Fall Break :fallen_leaf:
+No updates.
+
+---
+
+####10/13/2016
