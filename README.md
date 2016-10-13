@@ -202,7 +202,7 @@ perl generatebed.pl > exomes_breast_ovarian.bed
 ```
 ---
 ####09/27/2016: Creation of VCF file and extraction of variants.
-Used commands from [09/26](https://github.com/andrewteng/ahcg_pipeline#09062016-variant-calling) to create two FASTQ read files.
+Used commands from [09/06](https://github.com/andrewteng/ahcg_pipeline#09062016-variant-calling) to create two FASTQ read files.
 
 Re-ran [pipeline](https://github.com/andrewteng/ahcg_pipeline#build-bowtie-index) to generate a final VCF file.
 
@@ -227,7 +227,7 @@ Compared VCF files.
 bedtools intersect -a <FILE1> -b <FILE2>
 ```
 ---
-####10/04/2016
+####10/04/2016: Used GATK VariantRecalibrator and ApplyRecalibration on variants file.
 Downloaded new VCF file.
 ```{sh}
 wget http://vannberglab.biology.gatech.edu/data/ahcg2016/vcf/NA12878_variants.vcf
@@ -242,18 +242,22 @@ wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_omni
 wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_phase1.snps.high_confidence.hg19.sites.vcf.gz  
 wget ftp://gsapubftp-anonymous@ftp.broadinstitute.org/bundle/2.8/hg19/1000G_phase1.snps.high_confidence.hg19.sites.vcf.idx.gz  
   
-java -Xmx4g -jar lib/GenomeAnalysisTK.jar -T VariantRecalibrator -R resources/genome/hg19.fa -input NA12878_extractedVariants.vcf -resource:hapmap,known=false,training=true,truth=true,prior=15.0 resources/hapmap_3.3.hg19.sites.vcf.gz -resource:omni,known=false,training=true,truth=false,prior=12.0 resources/1000G_omni2.5.hg19.sites.vcf.gz -resource:1000G,known=false,training=true,truth=false,prior=10.0 resources/1000G_phase1.snps.high_confidence.hg19.sites.vcf.gz -resource:dbsnp,known=true,training=false,truth=false,prior=2.0 resources/dbsnp/dbsnp_138.hg19.vcf.gz -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR -an InbreedingCoeff -mode SNP -recalFile output.recal -tranchesFile output.tranches
+java -Xmx4g -jar lib/GenomeAnalysisTK.jar -T VariantRecalibrator -R resources/genome/hg19.fa -input variants.vcf -resource:hapmap,known=false,training=true,truth=true,prior=15.0 resources/hapmap_3.3.hg19.sites.vcf.gz -resource:omni,known=false,training=true,truth=false,prior=12.0 resources/1000G_omni2.5.hg19.sites.vcf.gz -resource:1000G,known=false,training=true,truth=false,prior=10.0 resources/1000G_phase1.snps.high_confidence.hg19.sites.vcf.gz -resource:dbsnp,known=true,training=false,truth=false,prior=2.0 resources/dbsnp/dbsnp_138.hg19.vcf.gz -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR -an InbreedingCoeff -mode SNP -recalFile output.recal -tranchesFile output.tranches -rscriptFile output.plots.R
 ```
-Errored out.
 
 ---
-####10/06/2016
+####10/06/2016: Reran previous commands, previously errored out. 
 Created a `tabix` indexed VCF file.
 ```{sh}
 bgzip <VCF FILE>  
 tabix -p <GZ VCF FILE>  
 ```
-Reran GATK VariantRecalibrator command.
+Reran GATK `VariantRecalibrator` command.
+Ran `ApplyRecalibration` command.
+
+```{sh}
+java -jar lib/GenomeAnalysisTK.jar -T ApplyRecalibration -R resources/genome/hg19.fa -input variants.vcf -mode SNP --ts_filter_level 99.0 -recalFile output.recal -tranchesFile output.tranches -o recalibrated_variants.vcf
+```
 
 ---
 
