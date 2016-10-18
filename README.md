@@ -282,13 +282,14 @@ python compare.py <VCF FILE> <CSV FILE>
 
 ---
 ####10/18/2016: Coverage calculation and report.
-Downloaded a coverage calculation script.
-```{sh}
-wget 
-```
+GATK DepthofCoverage
 
+```{sh}
+java -jar lib/GenomeAnalysisTK.jar -T DepthofCoverage -R resources/genome/hg19.fa -o output_base -I bams.list 
+```
 ---
 ####10/20/2016: ASHG Conference
 Excused Absence.
-----
+
+---
 ####10/25/2016
