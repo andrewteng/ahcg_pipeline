@@ -262,8 +262,33 @@ java -jar lib/GenomeAnalysisTK.jar -T ApplyRecalibration -R resources/genome/hg1
 ---
 
 ####10/11/2016: Fall Break :leaves: :fallen_leaf:
-No updates.
 
 ---
 
-####10/13/2016
+####10/13/2016: BRCA Exchange database comparison.
+
+Utilized the data for BRCA1 and BRCA2 from the BRCA Exchange database.
+```{sh}
+wget http://vannberg.biology.gatech.edu/data/ahcg2016/BRCA/BRCA1_brca_exchange_variants.csv
+wget http://vannberg.biology.gatech.edu/data/ahcg2016/BRCA/BRCA2_brca_exchange_variants.csv
+```
+The database uses hg36/37/38, while the reference previously used was hg19; therefore extraction based on hg36. Also, because database files include small indels, this function should be turned on.
+
+Downloaded `compare.py` script that compares vcf and csv files.
+```{sh}
+pip install PyVCF
+python compare.py <VCF FILE> <CSV FILE>
+```
+
+---
+####10/18/2016: Coverage calculation and report.
+Downloaded a coverage calculation script.
+```{sh}
+wget 
+```
+
+---
+####10/20/2016: ASHG Conference
+Excused Absence.
+----
+####10/25/2016
