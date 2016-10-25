@@ -282,14 +282,48 @@ python compare.py <VCF FILE> <CSV FILE>
 
 ---
 ####10/18/2016: Coverage calculation and report.
-GATK DepthofCoverage
+Bedtools genome coverage (genomecov)
 
 ```{sh}
-java -jar lib/GenomeAnalysisTK.jar -T DepthofCoverage -R resources/genome/hg19.fa -o output_base -I bams.list 
+bedtools genomecov [OPTIONS] [-i|-ibam] -g (iff. -i) 
+bedtooms intersect
 ```
 ---
-####10/20/2016: ASHG Conference
+####10/20/2016: Attended ASHG Conference
 Excused Absence.
 
 ---
-####10/25/2016
+####10/25/2016: Coverage (cont.)
+Matched variants from VCF with clinical risk.
+```{sh}
+python compare_clin_with_vcf.py vcf/NA12878_variants.vcf BRCA1_brca_exchange_variants.csv BRCA2_brca_exchange_variants.csv > brca_clinical_xref.t
+xt
+
+grep -vi "Benign" brca_clinical_xref.txt > brca_clinical_nonbenign_xref.txt
+
+cat brca_clinical_nonbenign_xref.txt | awk 'BEGIN {FS="\t"} {
+split($1, coord, ":") 
+
+printf("%s\t%s\t%s\t%s\n", coord[1], coord[2], coord[2], $2)}' | sed -E -e 's/^([^c].*)/chr\1/' > brca_clinical_nonbenign_xref.bed
+```
+
+Coverage calculator. 
+```{sh}
+grep 'NM_007298' bcoc_padded.bed > brca1.bed
+
+samtools view -L brca1.bed data/project.NIST_NIST7035_H7AP8ADXX_TAAGGCGA_1_NA12878.bwa.markDuplicates.bam -b > new.bam
+
+bedtools genomecov -ibam new.bam -bga na12878.bga.bed
+
+bedtools intersect -split -a brca1.bed -b na12878.bga.bed -bed > brca1.final.bed
+
+awk '{printf("%s\t%s\t%s\t%s\t%s\t%s\n",$1,$2,$3,$4,$10,$6)}' brca1.final.bed > brca1.coverage_final.bed
+
+bedtools intersect -a brca1.final.bed -b brca_clinical_nonbenign_xref.bed -wo > brca_clinical_nonbenign_final.bed
+
+cat brca_clinical_nonbenign_final.bed | cut -f4,5,7,8,10
+```
+
+---
+####10/27/2016
+
