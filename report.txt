@@ -1,0 +1,65 @@
+CONFIDENTIAL PATIENT REPORT
+------------------------------------------------------------------------
+NAME: Jane Doe		DOB: May 25, 1977
+ID: 123456		SEX: F	 		DATE: October 25, 2016
+------------------------------------------------------------------------
+RESULT: ***No mutations were indentified***
+------------------------------------------------------------------------
+SUMMARY: No pathogenic or likely pathogenic genetic variants associated 
+with an increased srik of breast or ovarian cancer were detected. 
+
+The results do not eliminate any risk of developing cancer as many 
+inhertited mutations can cause some cancers. Furthermore, other non-
+genetic factors such as environment, diet, family history, and lifestyle 
+can influence cancer risk. It may be beneficial if relatives also get
+genetic testing. If a relative has a mutation, contact us to learn about
+potential impact on your risk for cancer.
+
+------------------------------------------------------------------------
+GENES ANALYZED: (The following genes were analyzed and no pathogenic
+variants associated with an increased risk of breast or ovarian
+cancer.)
+
+BRCA1, BRCA2
+
+TOTAL: 2
+------------------------------------------------------------------------
+GENES NOT ANALYZED (The following genes were not analyzed, but could be
+associated with an increased risk of breast or ovarian cancer.)
+
+AR, ATM, BARD1, BRIP1, CASP8, CDH1, CHEK2, DIRAS3, ERBB2, EPCAM, MLH1
+MSH2, MSH6, NBN, PALB2, PTEN, PMS2, RAD50, RAD51, RAD51C, RAD51D, STK11
+TGFB1, TP53
+
+TOTAL: 24
+-----------------------------------------------------------------------
+COVERAGE DEPTH SUMMARY
+
+NM_007298:BRCA1	59	chr17	41196408	Benign(ENIGMA); Benign (ClinVar)
+NM_007298:BRCA1	79	chr17	41197274	Benign(ENIGMA); Benign (ClinVar)
+NM_007298:BRCA1	78	chr17	41197274	Benign(ENIGMA); Benign (ClinVar)
+NM_007298:BRCA1	103	chr17	41223094	Benign(ENIGMA); Benign,no_known_pathogenicity (ClinVar); Pending (BIC)
+NM_007298:BRCA1	119	chr17	41234470	Benign(ENIGMA); Benign (ClinVar); Class 1 (BIC)
+-----------------------------------------------------------------------
+RISK AND FAMILY INFORMATION
+
+BREAST CANCER
+
+Age	|Average Risk
+---------------------
+30	|<0.1%
+40	|<1%
+50	|1.9%
+60	|4.0%
+70	|7.1%
+80	|10%
+95	|12%
+------------------------------------------------------------------------
+GENERAL RECOMMENDATIONS
+-Maintain a health diet and weight
+-Exercise frequently/ get regular physical activity
+-Limit alchohol consumption
+-Protect your skin (use sunscreen if outdoors)
+-Get regular checkups and cancer screening tests
+------------------------------------------------------------------------
+
