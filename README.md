@@ -293,18 +293,14 @@ bedtooms intersect
 Excused Absence.
 
 ---
-####10/25/2016: Coverage (cont.)
+####10/25-27/2016: Coverage (cont.)
 Matched variants from VCF with clinical risk.
 ```{sh}
-python compare_clin_with_vcf.py vcf/NA12878_variants.vcf BRCA1_brca_exchange_variants.csv BRCA2_brca_exchange_variants.csv > brca_clinical_xref.t
-xt
+python compare_clin_with_vcf.py vcf/NA12878_variants.vcf BRCA1_brca_exchange_variants.csv BRCA2_brca_exchange_variants.csv > brca_clinical_xref.txt
 
 grep -vi "Benign" brca_clinical_xref.txt > brca_clinical_nonbenign_xref.txt
 
-cat brca_clinical_nonbenign_xref.txt | awk 'BEGIN {FS="\t"} {
-split($1, coord, ":") 
-
-printf("%s\t%s\t%s\t%s\n", coord[1], coord[2], coord[2], $2)}' | sed -E -e 's/^([^c].*)/chr\1/' > brca_clinical_nonbenign_xref.bed
+python convert_clintxt_to_vcf.py brca_clinical_nonbenign_xref.txt brca_clinical_nonbenign_xref.vcf
 ```
 
 Coverage calculator. 
@@ -323,7 +319,14 @@ bedtools intersect -a brca1.final.bed -b brca_clinical_nonbenign_xref.bed -wo > 
 
 cat brca_clinical_nonbenign_final.bed | cut -f4,5,7,8,10
 ```
+---
+####11/01/2016
+Repeated the same procedure for BRCA2.
 
 ---
-####10/27/2016
+####11/03/2016
+Extended the pipeline for all the genes, as seen in the gene list.
+
+---
+
 
