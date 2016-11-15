@@ -289,7 +289,7 @@ bedtools genomecov [OPTIONS] [-i|-ibam] -g (iff. -i)
 bedtooms intersect
 ```
 ---
-####10/20/2016: Attended ASHG Conference
+####10/20/2016: Attended ASHG Conference.
 Excused Absence.
 
 ---
@@ -328,5 +328,28 @@ Repeated the same procedure for BRCA2.
 Extended the pipeline for all the genes, as seen in the gene list.
 
 ---
+####11/08/2016: New gene list for dilated cardiomyopathy (DCM).
+|Gene|NCBI Reference|
+|----|----|
+|LMNA|NM_170707|
+|MYBPC3|NM_000256|
+|MYH7|NM_000257|
+|MYH6|NM_002471|
+|SCN5A|NM_198056|
+|TNNT2|NM_001001430|
 
+---
+####11/10/2016: Lecture.
+---
+####11/15/2016: Generation of BED file for DCM.
+```
+grep -Ff dcm_gene_list.txt hg19_refGene.txt > dcm.txt
+grep -Ff dcm_omim.txt dcm.txt > dcm1.txt
+```
+Create BED file and add 20 nucleotides to each side. 
+```
+perl generatebed.pl > exomes_dcm.bed
+```
 
+---
+####11/17/2016
