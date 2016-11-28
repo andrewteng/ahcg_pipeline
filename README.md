@@ -383,3 +383,19 @@ Using the 2 FASTQ files, rerun the entire pipeline and get a new variants VCF fi
 
 ---
 ####11/17/2016
+
+Using the generated VCF files from the controls and patients, GATK `VariantRecalibrator` was used. 
+
+Reran pipeline on Patient 1.
+
+---
+###11/22/2016: Lecture.
+
+---
+###11/24/2016: Thanksgiving Break :poultry_leg: :meat_on_bone:
+
+---
+###11/29/2016
+
+---
+###12/01/2016
