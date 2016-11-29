@@ -389,13 +389,13 @@ Using the generated VCF files from the controls and patients, GATK `VariantRecal
 Reran pipeline on Patient 1.
 
 ---
-###11/22/2016: Lecture.
+####11/22/2016: Lecture.
 
 ---
-###11/24/2016: Thanksgiving Break :poultry_leg: :meat_on_bone:
+####11/24/2016: Thanksgiving Break :poultry_leg: :meat_on_bone:
 
 ---
-###11/29/2016
+####11/29/2016
 
 ---
-###12/01/2016
+####12/01/2016
