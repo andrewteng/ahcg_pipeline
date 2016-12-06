@@ -1,7 +1,0 @@
-# Variant quality score tranches file
-# Version number 5
-targetTruthSensitivity,numKnown,numNovel,knownTiTv,novelTiTv,minVQSLod,filterName,model,accessibleTruthSites,callsAtTruthSites,truthSensitivity
-90.00,57185,4973,1.9954,0.3772,2.9996,VQSRTrancheSNP0.00to90.00,SNP,30224,27201,0.9000
-99.00,65710,5485,1.9979,0.3809,0.5348,VQSRTrancheSNP90.00to99.00,SNP,30224,29921,0.9900
-99.90,69327,6326,1.9804,0.3965,-4.2547,VQSRTrancheSNP99.00to99.90,SNP,30224,30193,0.9990
-100.00,69932,6400,1.9791,0.4017,-754065.3736,VQSRTrancheSNP99.90to100.00,SNP,30224,30224,1.0000

@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 
-open (BED_FILE, "breast_ovarian.txt");
+open (BED_FILE, "temp1.txt");
 
 foreach (<BED_FILE>){
 	my @start;

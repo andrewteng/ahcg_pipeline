@@ -395,7 +395,11 @@ Reran pipeline on Patient 1.
 ####11/24/2016: Thanksgiving Break :poultry_leg: :meat_on_bone:
 
 ---
-####11/29/2016
+####11/29-12/01/2016: Created Master Script.
+To use:
+```
+./wrapper.sh -b [BAM FILE] -g [GENE LIST] -n [OMIM FILE]
+```
 
 ---
-####12/01/2016
+####12/06/2016: Finishing Touches.
