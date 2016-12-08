@@ -395,11 +395,37 @@ Reran pipeline on Patient 1.
 ####11/24/2016: Thanksgiving Break :poultry_leg: :meat_on_bone:
 
 ---
-####11/29-12/01/2016: Created Master Script.
+####11/29-12/06/2016: Created Master Script.
 To use:
 ```
 ./wrapper.sh -b [BAM FILE] -g [GENE LIST] -n [OMIM FILE]
 ```
+This script will automatically perform variant call analyis and variant recalibration on the input files. Coverage will be calculated and can be plotted using `Chart.R` (This is separate from the pipeline). 
 
----
-####12/06/2016: Finishing Touches.
+Ex: To run with dialated cardiomyopathy (DCM) associated genetic variants:
+
+1. Download BAM and BAI files for patient 1.
+```
+http://vannberg.biology.gatech.edu/data/DCM/MenPa001DNA/Patient1_RG_MD_IR_BQ.bam
+http://vannberg.biology.gatech.edu/data/DCM/MenPa001DNA/Patient1_RG_MD_IR_BQ.bai
+```
+2. Run script `./wrapper.sh -b Patient1_RG_MD_IR_BQ.bam -g dcm_gene_list.bed -n dcm_omim.txt`
+3. Output will be a file with extracted variants and a coverage BED file.
+4. To create chart, R must be installed with ggplot2 package. 
+5. Report generation script was written by Wilson Martin.
+
+* This script uses a version of the ahcg_pipeline written by Shashidhar Ravishankar (Class TA) to find variants. One can also use the GATK HaplotypeCaller. 
+
+
+List of DCM Genes with found coordinates:
+
+|Disease|Gene|Nmid|Variant-c|Variant-p|rsid|coordinates-hg38 (variant)|type|
+|-----|-----|-----|-----|-----|-----|-----|-----|
+|DCM|LMNA|NM_170707.3|c.961C>T|p.Arg321Ter|rs267607554|chr1 : 156135925|nonsense|
+|DCM|LMNA|NM_170707.4|c.149G>C|p.Arg50Pro|rs60695352|chr1 : 156115067|missense|
+|DCM|LMNA|NM_170707.5|c178C>G|p.Arg60Gly|rs28928900|chr1 : 156115096|missense|
+|DCM|MYBPC3|NM_000256|-|-|-|-|-|
+|DCM|MYH7|NM_000257|-|-|-|-|-|
+|DCM|MYH6|NM_002471|-|-|-|-|-|
+|DCM|SCN5A|NM_198056.2|c.5872C>T|p.Arg1958Ter|rs757532106|chr3 : 38550500|nonsense|
+|DCM|TNNT2|NM_001001430.2|c.629_631delAGA|p.Lys210del|rs121964859|chr1 : 201361971 - 201361973|deletion|

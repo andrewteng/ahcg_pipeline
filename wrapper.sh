@@ -25,18 +25,7 @@ fi
 
 printf "=============================================\n"
 echo "AHCG Pipeline"
-printf "=============================================\n\n"
-
-echo -n "Starting"
-sleep .5
-echo -n "."
-sleep .5
-echo -n "."
-sleep .5
-echo -n "."
-sleep .5 
-echo -n "."
-sleep .5
+printf "=============================================\n"
 
 printf "\n(1/8) Converting BAM to FASTQ\n\n"
 bedtools bamtofastq -i "$bamFile" -fq fastq/read1.fq -fq2 fastq/read2.fq
@@ -61,12 +50,13 @@ printf "(6/8) Matching variants with clinical risk\n\n"
 bedtools intersect -a extracted_variants.vcf -b new_clinvar.vcf -header > extracted_clinvar.vcf
 
 printf "(7/8) Calculating coverage\n\n"
-samtools view -L dcm_gene_list.bed $bamFile -b > new.bam
+samtools view -L exomes.bed $bamFile -b > new.bam
 bedtools genomecov -ibam new.bam -bga > coverage_output.bed
-bedtools intersect -loj -split -a genes.bed -b coverage_output.bed >  cov.bed
+bedtools intersect -loj -split -a exomes.bed -b coverage_output.bed >  cov.bed
 awk '{printf("%s\t%s\t\%s\t%s\t%s\n", $1,$2,$3,$4,$10,$6)}' cov.bed > final_cov.bed
 
 printf "(7/8) Generating report\n\n"
+gzip extracted_clinvar.vcf
 python3 parse_clnsig.py -i extracted_clinvar.vcf.gz 2>&1 | tee report.txt 
 cut -c 24- report.txt
 
